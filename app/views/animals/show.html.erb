@@ -1,0 +1,24 @@
+<h1><%= @animal.name %></h1>
+<p>
+	<% if !@animal.image_url.empty? %>
+		<%= image_tag(@animal.image_url) %>
+	<% else %>
+		There isn't image to display.
+	<% end %>
+</p>
+<p>
+	<% if @animal.recent? %>
+		the extinction was recent.
+	<% else %>
+		the extinction wasn't recent.
+	<% end %>
+</p>
+<p>
+	<% @animal.common_names.each do |commonName| %>
+		Common Names: <%= commonName.name %>
+	<% end %>
+	<!-- or <% @animal.common_names[0].name %> -->
+</p>
+<p>
+	<%= link_to("Click here for more information.", @animal.url, html_options = {}) %>
+</p>

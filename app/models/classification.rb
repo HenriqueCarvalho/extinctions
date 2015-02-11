@@ -1,3 +1,3 @@
 class Classification < ActiveRecord::Base
-	has many :animals
+	has_many :animals
 end

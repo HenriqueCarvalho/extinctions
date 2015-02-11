@@ -1,0 +1,22 @@
+<h1><%= @classification.name %></h1>
+
+<% @classification.animals.sort { |a,b| a.extinction_date <=> b.extinction_date }.each do |animal| %>
+	<p>
+		<%= link_to(animal.name, animal_path(animal)) %>
+	</p>
+	<p>
+		<% if !animal.image_url.empty? %>
+			<%= image_tag(animal.image_url) %>
+		<% else %>
+			There isn't image to display.
+		<% end %>
+	</p>
+	<p>
+		<% if animal.recent? %>
+			the extinction was recent.
+		<% else %>
+			the extinction wasn't recent.
+		<% end %>
+	</p>
+	<br>
+<% end %>
